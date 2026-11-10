@@ -90,3 +90,49 @@ class Cliente(Entidad):
     # Indicamos el tipo de entidad.
     def obtener_tipo(self):
         return "Cliente"
+
+
+# Creamos una clase para gestionar los clientes del sistema.
+class GestorClientes:
+
+    # Inicializamos una lista para guardar los clientes.
+    def __init__(self):
+        self.__clientes = []
+
+    # Registramos un nuevo cliente en la lista.
+    def registrar_cliente(self, cliente):
+
+        # Verificamos que el objeto sea de tipo Cliente.
+        if not isinstance(cliente, Cliente):
+            raise TypeError("El registro debe ser un objeto de tipo Cliente.")
+
+        # Comprobamos que no exista otro cliente con la misma identificación.
+        for cliente_registrado in self.__clientes:
+            if cliente_registrado.identificador == cliente.identificador:
+                raise ValueError("Ya existe un cliente con esa identificación.")
+
+        # Agregamos el cliente a la lista.
+        self.__clientes.append(cliente)
+
+        return "Cliente registrado correctamente."
+
+    # Buscamos un cliente por su identificación.
+    def buscar_cliente(self, identificacion):
+
+        if not isinstance(identificacion, str) or not identificacion.strip():
+            raise ValueError("Debe ingresar una identificación válida.")
+
+        for cliente in self.__clientes:
+            if cliente.identificador == identificacion.strip():
+                return cliente
+
+        return None
+
+    # Consultamos todos los clientes registrados.
+    def listar_clientes(self):
+        return tuple(self.__clientes)
+
+    # Consultamos la cantidad de clientes registrados.
+    @property
+    def total_clientes(self):
+        return len(self.__clientes)
