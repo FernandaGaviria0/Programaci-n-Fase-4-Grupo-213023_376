@@ -136,3 +136,16 @@ class GestorClientes:
     @property
     def total_clientes(self):
         return len(self.__clientes)
+
+    # Eliminamos un cliente utilizando su identificación.
+    def eliminar_cliente(self, identificacion):
+
+        # Buscamos el cliente que queremos eliminar.
+        cliente = self.buscar_cliente(identificacion)
+
+        if cliente is None:
+            return False
+
+        self.__clientes.remove(cliente)
+
+        return True
