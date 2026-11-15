@@ -108,3 +108,48 @@ class Reserva:
             self.__estado = "Procesada"
             return "Reserva procesada correctamente."
 
+# Creamos una clase para administrar las reservas del sistema.
+class GestorReservas:
+
+# Inicializamos una lista para guardar las reservas.
+    def __init__(self):
+        self.__reservas = []
+
+    # Registramos una nueva reserva.
+    def registrar_reserva(self, reserva):
+
+        # Verificamos que el objeto sea de tipo Reserva.
+        if not isinstance(reserva, Reserva):
+            raise TypeError("Debe registrar un objeto de tipo Reserva.")
+
+        # Evitamos registrar reservas con la misma identificación.
+        for reserva_registrada in self.__reservas:
+            if reserva_registrada.identificacion == reserva.identificacion:
+                raise ValueError("Ya existe una reserva con esa identificación.")
+
+        # Agregamos la reserva a la lista.
+        self.__reservas.append(reserva)
+
+        return "Reserva registrada correctamente."
+
+    # Buscamos una reserva por su identificación.
+    def buscar_reserva(self, identificacion):
+
+        if not isinstance(identificacion, str) or not identificacion.strip():
+            raise ValueError("Debe ingresar una identificación válida.")
+
+        for reserva in self.__reservas:
+            if reserva.identificacion == identificacion.strip():
+                return reserva
+
+        return None
+
+    # Consultamos todas las reservas registradas.
+    def listar_reservas(self):
+        return tuple(self.__reservas)
+
+    # Consultamos la cantidad de reservas.
+    @property
+    def total_reservas(self):
+        return len(self.__reservas)
+
