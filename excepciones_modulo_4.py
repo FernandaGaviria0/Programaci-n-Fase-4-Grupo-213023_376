@@ -82,3 +82,101 @@ def registrar_evento(mensaje):
 # Registramos un error ocurrido durante la ejecución.
 def registrar_error(mensaje):
     registrador.error(mensaje)
+
+# Validamos que los parámetros obligatorios tengan información.
+def validar_parametros_obligatorios(**parametros):
+
+    for nombre, valor in parametros.items():
+
+        if valor is None or (
+            isinstance(valor, str) and not valor.strip()
+        ):
+            raise ParametroFaltanteError(
+                f"Falta el parámetro obligatorio: {nombre}."
+            )
+
+    return True
+
+
+# Verificamos que un servicio esté disponible.
+def validar_servicio_disponible(disponible):
+
+    if not isinstance(disponible, bool):
+        raise DatosInvalidosError(
+            "La disponibilidad debe ser verdadera o falsa."
+        )
+
+    if not disponible:
+        raise ServicioNoDisponibleError(
+            "El servicio seleccionado no está disponible."
+        )
+
+    return True
+
+
+# Verificamos que una operación esté permitida.
+def validar_operacion_permitida(permitida):
+
+    if not isinstance(permitida, bool):
+        raise DatosInvalidosError(
+            "El permiso de operación debe ser verdadero o falso."
+        )
+
+    if not permitida:
+        raise OperacionNoPermitidaError(
+            "La operación solicitada no está permitida."
+        )
+
+    return True
+
+
+# Verificamos que el estado de una reserva sea válido.
+def validar_estado_reserva(estado, estados_permitidos):
+
+    if not isinstance(estado, str) or estado not in estados_permitidos:
+        raise ReservaIncorrectaError(
+            "La reserva tiene un estado incorrecto."
+        )
+
+    return True
+
+
+# Ejecutamos operaciones controlando los posibles errores.
+def ejecutar_operacion(operacion, *args, **kwargs):
+
+    try:
+        # Comprobamos que se pueda ejecutar la operación.
+        if not callable(operacion):
+            raise ParametroFaltanteError(
+                "Debe proporcionar una función válida."
+            )
+
+        # Ejecutamos la operación solicitada.
+        resultado = operacion(*args, **kwargs)
+
+    except ErrorSistema as error:
+
+        # Registramos los errores personalizados.
+        registrar_error(f"Error controlado: {error}")
+        raise
+
+    except Exception as error:
+
+        # Registramos los errores inesperados.
+        registrador.exception("Se produjo un error inesperado.")
+
+        # Encadenamos la excepción original.
+        raise ErrorSistema(
+            "Ocurrió un error inesperado durante la operación."
+        ) from error
+
+    else:
+
+        # Registramos cuando la operación termina correctamente.
+        registrar_evento("La operación se ejecutó correctamente.")
+        return resultado
+
+    finally:
+
+        # Registramos el final de cada intento.
+        registrar_evento("Finalizó el intento de operación.")    
