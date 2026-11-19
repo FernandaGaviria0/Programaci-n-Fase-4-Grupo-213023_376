@@ -1,0 +1,11 @@
+2026-11-17 14:00:53 - INFO - Prueba de inicio del sistema.
+2026-11-17 14:00:53 - ERROR - Prueba de registro de un error.
+2026-11-17 14:18:10 - INFO - La operación se ejecutó correctamente.
+2026-11-17 14:18:10 - INFO - Finalizó el intento de operación.
+2026-11-17 14:18:10 - ERROR - Se produjo un error inesperado.
+Traceback (most recent call last):
+  File "/workspaces/Programaci-n-Fase-4-Grupo-213023_376/excepciones_modulo_4.py", line 155, in ejecutar_operacion
+    resultado = operacion(*args, **kwargs)
+  File "<stdin>", line 40, in <lambda>
+ZeroDivisionError: division by zero
+2026-11-17 14:18:10 - INFO - Finalizó el intento de operación.
