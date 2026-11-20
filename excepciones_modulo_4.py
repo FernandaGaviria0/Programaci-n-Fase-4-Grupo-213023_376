@@ -2,6 +2,7 @@
 
 
 # Importamos la herramienta para registrar eventos y errores.
+from pathlib import Path
 import logging
 
 
@@ -52,9 +53,11 @@ def configurar_registro():
     # Evitamos crear varios archivos de registro.
     if not registrador.handlers:
 
+        # Definimos la ruta del archivo de log
+        ruta_log = Path(__file__).parent / "eventos_errores.log"
         # Creamos el archivo donde se guardarán los eventos.
         archivo = logging.FileHandler(
-            "eventos_errores.log",
+            ruta_log,
             encoding="utf-8"
         )
 
