@@ -1,54 +1,63 @@
-2026-11-19 19:25:40 - INFO - === INICIO DE SIMULACIÓN (PRUEBAS 1 A 10 - SOFTWARE FJ) ===
-2026-11-19 19:25:40 - INFO - La operación se ejecutó correctamente.
-2026-11-19 19:25:40 - INFO - Finalizó el intento de operación.
-2026-11-19 19:25:40 - ERROR - Se produjo un error inesperado.
+2026-11-20 15:07:12 - INFO - === INICIO DE SIMULACIÓN (PRUEBAS 1 A 10 - SOFTWARE FJ) ===
+2026-11-20 15:07:12 - INFO - La operación se ejecutó correctamente.
+2026-11-20 15:07:12 - INFO - Finalizó el intento de operación.
+2026-11-20 15:07:12 - ERROR - Se produjo un error inesperado.
 Traceback (most recent call last):
-  File "D:\Unad\Programación\Programaci-n-Fase-4-Grupo-213023_376-main\Programaci-n-Fase-4-Grupo-213023_376-main\excepciones_modulo_4.py", line 155, in ejecutar_operacion
+  File "/workspaces/Programaci-n-Fase-4-Grupo-213023_376/excepciones_modulo_4.py", line 158, in ejecutar_operacion
     resultado = operacion(*args, **kwargs)
-  File "d:\Unad\Programación\Programaci-n-Fase-4-Grupo-213023_376-main\Simulación_10_operaciones.py", line 99, in p2
+  File "/workspaces/Programaci-n-Fase-4-Grupo-213023_376/Simulación_10_operaciones.py", line 128, in p2
     c_malo = Cliente("CC-1002", "Carlos", "correo_invalido", "3009876543")
-  File "D:\Unad\Programación\Programaci-n-Fase-4-Grupo-213023_376-main\Programaci-n-Fase-4-Grupo-213023_376-main\FASE4.py", line 53, in __init__
+  File "/workspaces/Programaci-n-Fase-4-Grupo-213023_376/FASE4.py", line 53, in __init__
     raise ValueError("El correo electrónico no es válido.")
 ValueError: El correo electrónico no es válido.
-2026-11-19 19:25:40 - INFO - Finalizó el intento de operación.
-2026-11-19 19:25:40 - ERROR - Prueba 2 falló (el correo electrónico no tiene un formato válido (falta '@' o dominio)) -> Detalle: Ocurrió un error inesperado durante la operación.
-2026-11-19 19:25:40 - INFO - La operación se ejecutó correctamente.
-2026-11-19 19:25:40 - INFO - Finalizó el intento de operación.
-2026-11-19 19:25:40 - INFO - La operación se ejecutó correctamente.
-2026-11-19 19:25:40 - INFO - Finalizó el intento de operación.
-2026-11-19 19:25:40 - ERROR - Se produjo un error inesperado.
+2026-11-20 15:07:12 - INFO - Finalizó el intento de operación.
+2026-11-20 15:07:12 - INFO - Prueba 2 superada.
+2026-11-20 15:07:12 - INFO - La operación se ejecutó correctamente.
+2026-11-20 15:07:12 - INFO - Finalizó el intento de operación.
+2026-11-20 15:07:12 - INFO - La operación se ejecutó correctamente.
+2026-11-20 15:07:12 - INFO - Finalizó el intento de operación.
+2026-11-20 15:07:12 - ERROR - Se produjo un error inesperado.
 Traceback (most recent call last):
-  File "D:\Unad\Programación\Programaci-n-Fase-4-Grupo-213023_376-main\Programaci-n-Fase-4-Grupo-213023_376-main\excepciones_modulo_4.py", line 155, in ejecutar_operacion
+  File "/workspaces/Programaci-n-Fase-4-Grupo-213023_376/excepciones_modulo_4.py", line 158, in ejecutar_operacion
     resultado = operacion(*args, **kwargs)
-  File "d:\Unad\Programación\Programaci-n-Fase-4-Grupo-213023_376-main\Simulación_10_operaciones.py", line 139, in p5
+  File "/workspaces/Programaci-n-Fase-4-Grupo-213023_376/Simulación_10_operaciones.py", line 170, in p5
     equipo_malo = AlquilerEquipos("EQ-01", "Proyector", -5000, "Epson")
-  File "D:\Unad\Programación\Programaci-n-Fase-4-Grupo-213023_376-main\Programaci-n-Fase-4-Grupo-213023_376-main\Clase abstracta y especializaciones.py", line 79, in __init__
+  File "/workspaces/Programaci-n-Fase-4-Grupo-213023_376/Clase abstracta y especializaciones.py", line 79, in __init__
     super().__init__(identificador, nombre_servicio, precio_base)
     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Unad\Programación\Programaci-n-Fase-4-Grupo-213023_376-main\Programaci-n-Fase-4-Grupo-213023_376-main\Clase abstracta y especializaciones.py", line 19, in __init__
+  File "/workspaces/Programaci-n-Fase-4-Grupo-213023_376/Clase abstracta y especializaciones.py", line 19, in __init__
     raise ValueError("El precio base debe ser un valor numérico mayor a cero.")
 ValueError: El precio base debe ser un valor numérico mayor a cero.
-2026-11-19 19:25:40 - INFO - Finalizó el intento de operación.
-2026-11-19 19:25:40 - ERROR - Prueba 5 falló (ingrese un valor mayor a 0 para el precio base del servicio) -> Detalle: Ocurrió un error inesperado durante la operación.
-2026-11-19 19:25:40 - INFO - La operación se ejecutó correctamente.
-2026-11-19 19:25:40 - INFO - Finalizó el intento de operación.
-2026-11-19 19:25:40 - INFO - La operación se ejecutó correctamente.
-2026-11-19 19:25:40 - INFO - Finalizó el intento de operación.
-2026-11-19 19:25:40 - ERROR - Se produjo un error inesperado.
+2026-11-20 15:07:12 - INFO - Finalizó el intento de operación.
+2026-11-20 15:07:12 - INFO - Prueba 5 superada.
+2026-11-20 15:07:12 - INFO - La operación se ejecutó correctamente.
+2026-11-20 15:07:12 - INFO - Finalizó el intento de operación.
+2026-11-20 15:07:12 - INFO - La operación se ejecutó correctamente.
+2026-11-20 15:07:12 - INFO - Finalizó el intento de operación.
+2026-11-20 15:07:12 - ERROR - Se produjo un error inesperado.
 Traceback (most recent call last):
-  File "D:\Unad\Programación\Programaci-n-Fase-4-Grupo-213023_376-main\Programaci-n-Fase-4-Grupo-213023_376-main\excepciones_modulo_4.py", line 155, in ejecutar_operacion
+  File "/workspaces/Programaci-n-Fase-4-Grupo-213023_376/excepciones_modulo_4.py", line 158, in ejecutar_operacion
     resultado = operacion(*args, **kwargs)
-  File "d:\Unad\Programación\Programaci-n-Fase-4-Grupo-213023_376-main\Simulación_10_operaciones.py", line 197, in p8
+  File "/workspaces/Programaci-n-Fase-4-Grupo-213023_376/Simulación_10_operaciones.py", line 229, in p8
     res_invalida = Reserva("RES-002", cliente_valido[0], sala_valida[0], 0)
-  File "D:\Unad\Programación\Programaci-n-Fase-4-Grupo-213023_376-main\Programaci-n-Fase-4-Grupo-213023_376-main\reservas_modulo_3.py", line 34, in __init__
+  File "/workspaces/Programaci-n-Fase-4-Grupo-213023_376/reservas_modulo_3.py", line 34, in __init__
     raise ValueError("La duración debe ser mayor que cero.")
 ValueError: La duración debe ser mayor que cero.
-2026-11-19 19:25:40 - INFO - Finalizó el intento de operación.
-2026-11-19 19:25:40 - ERROR - Prueba 8 falló (ingrese una duración mayor a 0 para la reserva) -> Detalle: Ocurrió un error inesperado durante la operación.
-2026-11-19 19:25:40 - ERROR - Error controlado: La operación solicitada no está permitida.
-2026-11-19 19:25:40 - INFO - Finalizó el intento de operación.
-2026-11-19 19:25:40 - ERROR - Prueba 9 falló (la operación solicitada no está permitida en el estado actual del sistema) -> Detalle: La operación solicitada no está permitida.
-2026-11-19 19:25:40 - ERROR - Error controlado: La reserva tiene un estado incorrecto.
-2026-11-19 19:25:40 - INFO - Finalizó el intento de operación.
-2026-11-19 19:25:40 - ERROR - Prueba 10 falló (no se puede cancelar una reserva que ya fue procesada) -> Detalle: La reserva tiene un estado incorrecto.
-2026-11-19 19:25:40 - INFO - === FIN DE SIMULACIÓN (PRUEBAS 1 A 10 - SOFTWARE FJ) ===
+2026-11-20 15:07:12 - INFO - Finalizó el intento de operación.
+2026-11-20 15:07:12 - INFO - Prueba 8 superada.
+2026-11-20 15:07:12 - ERROR - Error controlado: La operación solicitada no está permitida.
+2026-11-20 15:07:12 - INFO - Finalizó el intento de operación.
+2026-11-20 15:07:12 - INFO - Prueba 9 superada.
+2026-11-20 15:07:12 - ERROR - Se produjo un error inesperado.
+Traceback (most recent call last):
+  File "/workspaces/Programaci-n-Fase-4-Grupo-213023_376/excepciones_modulo_4.py", line 158, in ejecutar_operacion
+    resultado = operacion(*args, **kwargs)
+  File "/workspaces/Programaci-n-Fase-4-Grupo-213023_376/Simulación_10_operaciones.py", line 260, in p10
+    return reserva_activa[0].cancelar()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/workspaces/Programaci-n-Fase-4-Grupo-213023_376/reservas_modulo_3.py", line 84, in cancelar
+    raise ValueError("La reserva no se puede cancelar.")
+ValueError: La reserva no se puede cancelar.
+2026-11-20 15:07:12 - INFO - Finalizó el intento de operación.
+2026-11-20 15:07:12 - INFO - Prueba 10 superada.
+2026-11-20 15:07:12 - INFO - === FIN DE SIMULACIÓN (PRUEBAS 1 A 10 - SOFTWARE FJ) ===
