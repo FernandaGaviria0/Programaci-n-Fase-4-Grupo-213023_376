@@ -46,25 +46,54 @@ from excepciones_modulo_4 import (
 )
 
 
-def correr_prueba(numero, descripcion, accion, razon_fallo):
+# Ejecutamos cada prueba y verificamos su resultado.
+def correr_prueba(numero, descripcion, accion, razon_fallo, espera_error=False):
+
     print(f"--- Prueba {numero}: {descripcion} ---")
+
     try:
         resultado = ejecutar_operacion(accion)
+
+    except Exception as exc:
+
+        detalle = str(exc).strip()
+
+        # Si se esperaba un error, consideramos superada la prueba.
+        if espera_error:
+            mensaje = f"Rechazo esperado detectado correctamente: {razon_fallo}"
+
+            if detalle:
+                mensaje += f" -> Detalle: {detalle}"
+
+            registrar_evento(f"Prueba {numero} superada.")
+            print(f"Correcto: {mensaje}\n")
+            return True
+
+        # Si no se esperaba un error, registramos el fallo.
+        mensaje_error = f"Prueba {numero} falló ({razon_fallo})"
+
+        if detalle:
+            mensaje_error += f" -> Detalle: {detalle}"
+
+        registrar_error(mensaje_error)
+        print(f"Error: {mensaje_error}\n")
+        return None
+
+    else:
+
+        # Si se esperaba un error, pero no ocurrió, la prueba falla.
+        if espera_error:
+            mensaje_error = (
+                f"Prueba {numero} falló: se esperaba un rechazo "
+                f"({razon_fallo}), pero la operación se ejecutó."
+            )
+
+            registrar_error(mensaje_error)
+            print(f"Error: {mensaje_error}\n")
+            return None
+
         print(f"Resultado: {resultado}\n")
         return resultado
-    except Exception as exc:
-        detalle = str(exc).strip()
-        if detalle:
-            mensaje_error = f"Prueba {numero} falló ({razon_fallo}) -> Detalle: {detalle}"
-        else:
-            mensaje_error = f"Prueba {numero} falló ({razon_fallo})"
-
-        try:
-            raise ErrorSistema(mensaje_error) from exc
-        except ErrorSistema as encadenado:
-            registrar_error(str(encadenado))
-            print(f"Error: {encadenado}\n")
-            return None
 
 
 def simular_sistema():
@@ -104,7 +133,9 @@ def simular_sistema():
         "Registro inválido de cliente por correo",
         p2,
         "el correo electrónico no tiene un formato válido (falta '@' o dominio)",
+        espera_error=True,
     )
+    
 
     # Prueba 3: Registro de segundo cliente válido
     def p3():
@@ -141,11 +172,12 @@ def simular_sistema():
         return equipo_malo.describir_servicio()
 
     correr_prueba(
-        5,
-        "Creación incorrecta de servicio con precio negativo",
-        p5,
-        "ingrese un valor mayor a 0 para el precio base del servicio",
-    )
+    5,
+    "Creación incorrecta de servicio con precio negativo",
+    p5,
+    "ingrese un valor mayor a 0 para el precio base del servicio",
+    espera_error=True,
+)
 
     # Prueba 6: Creación correcta de AlquilerEquipos y AsesoriaEspecializada
     def p6():
@@ -198,11 +230,12 @@ def simular_sistema():
         return gestor_reservas.registrar_reserva(res_invalida)
 
     correr_prueba(
-        8,
-        "Intento de reserva fallido por duración inválida",
-        p8,
-        "ingrese una duración mayor a 0 para la reserva",
-    )
+    8,
+    "Intento de reserva fallido por duración inválida",
+    p8,
+    "ingrese una duración mayor a 0 para la reserva",
+    espera_error=True,
+)
 
     # Prueba 9: Intento de operación no permitida
     def p9():
@@ -210,25 +243,29 @@ def simular_sistema():
         return "No debería ejecutarse"
 
     correr_prueba(
-        9,
-        "Intento de operación no permitida",
-        p9,
-        "la operación solicitada no está permitida en el estado actual del sistema",
-    )
+    9,
+    "Intento de operación no permitida",
+    p9,
+    "la operación solicitada no está permitida en el estado actual del sistema",
+    espera_error=True,
+)
 
     # Prueba 10: Intento de cancelar una reserva ya procesada
     def p10():
         if reserva_activa[0] is None:
-            raise ReservaIncorrectaError("no hay una reserva registrada para validar")
-        validar_estado_reserva(reserva_activa[0].estado, ("Pendiente", "Confirmada"))
+            raise ReservaIncorrectaError(
+                "no hay una reserva registrada para validar"
+            )
+
         return reserva_activa[0].cancelar()
 
     correr_prueba(
-        10,
-        "Intento de cancelar una reserva ya procesada",
-        p10,
-        "no se puede cancelar una reserva que ya fue procesada",
-    )
+    10,
+    "Intento de cancelar una reserva ya procesada",
+    p10,
+    "no se puede cancelar una reserva que ya fue procesada",
+    espera_error=True,
+)
 
     registrar_evento("=== FIN DE SIMULACIÓN (PRUEBAS 1 A 10 - SOFTWARE FJ) ===")
     print(f"Simulación completada. Revisa el registro en: {CARPETA_PROYECTO / 'eventos_errores.log'}")
